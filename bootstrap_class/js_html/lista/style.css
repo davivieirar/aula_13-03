@@ -1,0 +1,20 @@
+ul li {
+    cursor: pointer;
+    list-style: none;
+    background-color: #eee;
+    font-size: 32px;
+}
+
+ul li:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+ul li:hover {
+    background-color: #ddd;
+}
+
+ul li.concluido {
+    background-color: #2ecc71;
+    color: white;
+    text-decoration: line-through;
+}

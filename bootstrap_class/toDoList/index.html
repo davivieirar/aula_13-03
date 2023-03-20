@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container"><!--Botão com Input-->
+        <h1>ToDo List</h1>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Recipient's username" 
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+            id="inputTask"
+          />
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addTask()">+ Add</button>
+        </div>
+        <!-- Lista de Tasks -->
+        <ul id='lista' class="list-group list-group-flush">
+            <li class="list-group-item">An item</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+            <li class="list-group-item">A fourth item</li>
+            <li class="list-group-item">And a fifth one</li>
+          </ul></div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+  <script>
+    let task=document.getElementById('inputTask')
+    function addTask(){
+    // alert(`Adicionou: ${task.value}`)
+    // let ul=document.getElementById('lista')
+    // let li=`<li class="list-group-item">${task.value}</li>`
+    // ul.innerHTML=li
+    let tasks=[]
+    if(task){
+        tasks.push(task.value)
+        innerHTML= 
+    }
+    }
+  </script>
+</html>
