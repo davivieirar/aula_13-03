@@ -11,46 +11,95 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
-    <div class="container"><!--Botão com Input-->
-        <h1>ToDo List</h1>
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Recipient's username" 
-            aria-label="Recipient's username"
-            aria-describedby="button-addon2"
-            id="inputTask"
-          />
-          <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addTask()">+ Add</button>
-        </div>
-        <!-- Lista de Tasks -->
-        <ul id='lista' class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-          </ul></div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+<body>
+  <div class="container"><!--Botão com Input-->
+    <h1>ToDo List</h1>
+    <form id="form">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" id="task"/> 
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon2" onclick="addTask()">+ Add</button>
+      </div>
+      <!-- Lista de Tasks --> 
+      <ul id='lista' class="list-group list-group-numbered">
+          <!-- <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">A fourth item</li>
+          <li class="list-group-item">And a fifth one</li> -->
+        </ul>
+      </div>
+    </form>
+      
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"
+  ></script>
+</body>
   <script>
-    let task=document.getElementById('inputTask')
-    function addTask(){
-    // alert(`Adicionou: ${task.value}`)
-    // let ul=document.getElementById('lista')
-    // let li=`<li class="list-group-item">${task.value}</li>`
-    // ul.innerHTML=li
-    let tasks=[]
-    if(task){
-        tasks.push(task.value)
-        innerHTML= 
+    // let task=document.getElementById('inputTask');
+//     function addTask(){
+//     // alert(`Adicionou: ${task.value}`);
+//     let ul=document.getElementById('lista');
+//     let li=`<li class="list-group-item">${task.value}</li>`;
+//     ul.innerHTML=li;
+//     // let tasks=[];
+//     // if(task){
+//     //     tasks.push(task.value);
+//     //     innerHTML=;
+//     // }
+//  }
+let form=document.getElementById('form');
+console.log(task.value);
+let taskList=[];
+function addTask(){
+  form.addEventListener('submit', function(event){
+  event.preventDefault();
+
+    let task=document.getElementById('task');
+    let inputValue=task.value.trim();
+
+      if(inputValue !== ''){
+        // console.log('valor : '+task.value);
+        taskList.push(inputValue);
+        console.log(taskList);
+        task.value=''
+        showList();
+      } 
+     });
     }
-    }
+function showList(){
+  let list=document.getElementsByTagName('ul')[0];
+  console.log(list);
+  list.innerHTML='';
+
+  taskList.forEach(function(item, index){
+  const li=document.createElement('li');
+  li.classList.add('list-group-item');
+
+  const texto=document.createTextNode(item);
+  li.appendChild(texto);
+  list.appendChild(li);
+
+  let button=document.createElement('button');
+  button.classList.add('btn', 'btn-danger', 'float-end');
+  button.dataset.index=index;
+  
+  const x=document.createTextNode('X');
+  button.appendChild(x);
+
+  button.addEventListener('click', function(e){
+    let index=e.target.dataset.index;
+    console.log(index);
+
+    taskList.splice(index, 1);
+    showList();
+  })
+
+  li.appendChild(button);
+
+  })
+}
+
   </script>
 </html>
